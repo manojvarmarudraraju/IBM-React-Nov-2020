@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Products</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        class Products extends React.Component{
+            state = {
+                product: '',
+                productNames: [],
+            }
+            onChange = (evt) =>{
+                this.setState({
+                    product: evt.target.value,
+                })
+            }
+            onClick = () => {
+                if(this.state.product.trim() !== "")
+                {
+                    this.setState((prevState) => {
+                        if(prevState.productNames.includes(this.state.product))
+                        {
+                            alert("Element already exists");
+                            return
+                        }
+                        return {
+                            productNames: [...prevState.productNames, this.state.product]
+                        }
+                        }
+                    )
+                }
+            }
+            render(){
+                const productItems = this.state.productNames.map((productName, index) => (<li key={index}>{productName}</li>));
+                return(
+                    <div>
+                        <h1>Products</h1>
+                        <hr/>
+                        <label>Product Name :</label>
+                        <input type="text" onChange={this.onChange}/>
+                        <input type="button" value="Add Product" onClick={this.onClick}/>
+                        <ol>
+                            {productItems}
+                        </ol>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Products/>, document.getElementById('root'));
+    </script>
+</head>
+<body>
+<div id="root">
+</div>
+</body>
+</html>
+
+
+
+
+
+
