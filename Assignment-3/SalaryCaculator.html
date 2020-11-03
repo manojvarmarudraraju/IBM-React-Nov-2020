@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component - Intro</title>
+    <style>
+        .highlight{
+            color : red;
+            font-size: 18pt;
+        }
+    </style>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        class Greeter extends React.Component {
+            //state
+            state = { 
+                basic: '[basic]',
+                hra: '[HRA]',
+                da: '[DA]',
+                tax: '[TAX]',
+                salary: '[Salary]',
+            };
+
+            //behavior
+            onChange = (evt) => {
+                this.setState({ [evt.target.name] : evt.target.value });
+            }
+            
+            onClick = () => {
+                const { basic , hra , da , tax} = this.state;
+                const salary = ((parseFloat(basic) + parseFloat(hra) + parseFloat(da))*(100 -parseFloat(tax)))/100;
+                this.setState({salary})
+            }
+
+            //presentation
+            render(){
+                return(
+                    <div>
+                        <h1>Salary Calculator</h1>
+                        <hr/>
+                        <div class="field">
+                            <label for="">Basic :</label>
+                            <input type="number" onChange={this.onChange} name="basic" id="basic" />
+                        </div>
+                        <div class="field">
+                            <label for="">HRA :</label>
+                            <input type="number" onChange={this.onChange} name="hra" id="hra" />
+                        </div>
+                        <div class="field">
+                            <label for="">DA :</label>
+                            <input type="number" onChange={this.onChange} name="da" id="da" />
+                        </div>
+                        <div class="field">
+                            <label for="">Tax :</label>
+                            <input type="range" onChange={this.onChange} name="tax" id="tax" min="0" max="30" />
+                        </div>
+                        <div class="field">
+                            <input type="button" onClick={this.onClick} value="Calculate" />
+                        </div>
+                        <div class="field">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>{this.state.basic}</td>
+                                        <td>{this.state.hra}</td>
+                                        <td>{this.state.da}</td>
+                                        <td>{this.state.tax}</td>
+                                        <td>{this.state.salary}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Greeter />, 
+        document.getElementById('root'))
+    </script>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+</html>
