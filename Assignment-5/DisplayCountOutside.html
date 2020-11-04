@@ -28,10 +28,7 @@
                             <span>Count : </span>
                             <span>{productNames.length}</span>
                         </div>
-                        <Products onBtnAddProductClick={this.onBtnAddProductClick} />
-                        <ol>
-                            {productItems}
-                        </ol>
+                        <Products Products={this.state.productNames} onBtnAddProductClick={this.onBtnAddProductClick} />
                     </div>
                 );
             }
@@ -45,11 +42,17 @@
             }
 
             render(){
+                const {Products}= this.props;
+                const productItems = Products.map((productName, index) => (<li key={index}>{productName}</li>));
+
                 return(
                     <div>
                         <label>Product Name :</label>
                         <input type="text" ref={this.txtNewProductNameRef} />
                         <input type="button" value="Add Product" onClick={this.onBtnAddProductClick}/>
+                        <ol>
+                            {productItems}
+                        </ol>
                     </div>
                 )
             }
