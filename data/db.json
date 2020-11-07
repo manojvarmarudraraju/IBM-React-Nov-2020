@@ -1,5 +1,10 @@
 {
-  "categories": [],
+  "categories": [
+    {
+      "id": 2,
+      "name": "Stationary"
+    }
+  ],
   "products": [
     {
       "id": 1,

@@ -1,13 +1,31 @@
-let newCategoryId = 0;
+import CategoriesAPI from './services';
+
 const categoryActionCreators = { 
     addNew(categoryName){
-        const newCategory = { id : ++newCategoryId, name : categoryName};
-        const action = { type : 'ADD_CATEGORY', payload : newCategory };
-        return action;
+        return function(dispatch){
+            const newCategory = { id : 0, name : categoryName};
+            const action = { type : 'ADD_CATEGORY', payload : newCategory };
+            CategoriesAPI
+                .save(newCategory).then((newCategory) => {
+                    dispatch(action);
+                }).catch(() => {
+                    dispatch(action);
+                })
+        }
     },
     setSelected(category){
         const action = { type : 'SET_SELECTED_CATEGORY', payload : category};
         return action;
+    },
+    load(){
+        return function(dispatch){
+            CategoriesAPI
+                .getAll()
+                .then(function(categories){
+                    const action = { type: "INIT_CATEGORIES", payload: categories };
+                    dispatch(action);
+                });
+        }
     }
 }
 

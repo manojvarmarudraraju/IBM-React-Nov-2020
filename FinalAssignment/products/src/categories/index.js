@@ -1,25 +1,27 @@
-import React, { useRef } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import categoryActionCreators from './actions';
 import './index.css';
 
-/* class Categories extends React.Component{
-    txtNewCategoryNameRef = React.createRef();
+class Categories extends Component{
+    state = {
+        newCategorName : ''
+    };
 
     onAddNewClick = () => {
-        const newCategoryName = this.txtNewCategoryNameRef.current.value;
-        this.props.addNew(newCategoryName);
+        this.props.addNew(this.state.newCategorName);
     }
 
     render(){
-        const { data, selected, setSelected } = this.props;
+        const { data, selected, setSelected , load } = this.props;
         return(
             <div>
-                <h3>Categores</h3>
+                <h3>Categories</h3>
+                <input type="button" value="LOAD CATEGORIES" onClick={load} />
                 <hr></hr>
                 <label>Category Name :</label>
-                <input type="text" ref={this.txtNewCategoryNameRef} />                
+                <input type="text" onChange={ evt => this.setState({ newCategorName : evt.target.value})} />                
                 <input type="button" value="Add New" onClick={this.onAddNewClick} />
                 <ol>
                     { 
@@ -37,40 +39,6 @@ import './index.css';
             </div>
         )
     }
-} */
-
-const Categories = ({ data, selected, setSelected, addNew }) => {
-    const txtNewCategoryNameRef = useRef();
-    const onAddNewClick = () => {
-        addNew(txtNewCategoryNameRef.current.value);
-        txtNewCategoryNameRef.current.value = '';
-        txtNewCategoryNameRef.current.focus();
-    }
-    return(
-        <div>
-            <h3>Categores</h3>
-            <hr></hr>
-            <label>Category Name :</label>
-            <input type="text" ref={txtNewCategoryNameRef} />                
-            <input 
-                type="button" 
-                value="Add New" 
-                onClick={onAddNewClick} />
-            <ol>
-                { 
-                    data.map(category => (
-                        <li 
-                            key={category.id} 
-                            onClick={ () => setSelected(category.name) }
-                            className = {category.name === selected ? 'selected' : '' }
-                        >
-                            {category.name} 
-                        </li>)
-                    ) 
-                }
-            </ol>
-        </div>
-    )
 }
 
 function mapStateToProps(storeState){
