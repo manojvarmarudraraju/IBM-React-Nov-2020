@@ -1,42 +1,22 @@
 {
-  "categories": [
-    {
-      "id": 1,
-      "name": "Stationary"
-    },
-    {
-      "id": 2,
-      "name": "Grocery"
-    },
-    {
-      "id": 3,
-      "name": "Utencils"
-    }
-  ],
+  "categories": [],
   "products": [
     {
-      "id": 2,
-      "name": "Pencil",
-      "isOutOfStock": false,
-      "price": 5,
-      "category": "Stationary",
-      "description": "Ipsum anim dolore irure amet ut ullamco sint deserunt est eiusmod. Cupidatat excepteur sint exercitation laboris ut. Velit et voluptate irure dolore velit irure consequat Lorem aliqua non velit exercitation laborum."
-    },
-    {
-      "id": 3,
+      "id": 1,
       "name": "Pen",
-      "description": "Ipsum anim dolore irure amet ut ullamco sint deserunt est eiusmod. Cupidatat excepteur sint exercitation laboris ut. Velit et voluptate irure dolore velit irure consequat Lorem aliqua non velit exercitation laborum.",
+      "description": "nfknafkndksank",
       "price": 10,
-      "isOutOfStock": true,
+      "isOutOfStock": false,
       "category": "Stationary"
     },
     {
-      "id": 4,
-      "name": "Frying Pan",
-      "description": "Ipsum anim dolore irure amet ut ullamco sint deserunt est eiusmod. Cupidatat excepteur sint exercitation laboris ut. Velit et voluptate irure dolore velit irure consequat Lorem aliqua non velit exercitation laborum.",
-      "price": 250,
+      "id": 2,
+      "name": "Pencil",
+      "description": "nfknafkndksank",
+      "price": 5,
       "isOutOfStock": false,
-      "category": "Utensil"
+      "category": "Stationary"
     }
-  ]
+  ],
+  "cart": []
 }
