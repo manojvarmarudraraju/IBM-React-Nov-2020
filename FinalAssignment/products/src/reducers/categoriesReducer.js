@@ -8,6 +8,8 @@ function categoriesReducer(currentState = initialState, action){
         return {...currentState, categoryList : [...currentState.categoryList, action.payload] };
     if (action.type === 'SET_SELECTED_CATEGORY')
         return {...currentState, selectedCategory : action.payload }
+    if (action.type === 'INIT_CATEGORIES')
+        return {...currentState , categoryList: action.payload}
     return currentState;
 }
 

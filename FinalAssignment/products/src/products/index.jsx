@@ -8,6 +8,7 @@ import ProductEditor from './views/ProductEditor';
 import ProductsList from './views/ProductsList';
 import './index.css';
 import productActionCreators from './actions';
+import cartActionCreators from '../cart/actions';
 
 /* class Products extends React.Component {
     componentDidMount() {
@@ -32,7 +33,7 @@ import productActionCreators from './actions';
     }
 } */
 
- const Products = ({ data, categories, toggleOutOfStock, remove, removeOutOfStock, addNew, load }) => {
+ const Products = ({ data, categories, toggleOutOfStock, remove, removeOutOfStock, addNew, load , addItemInCart , cart }) => {
      useEffect(load, [load]);
      return (
         <div>
@@ -46,6 +47,8 @@ import productActionCreators from './actions';
                 toggleOutOfStock={toggleOutOfStock}
                 remove={remove}
                 removeOutOfStock={removeOutOfStock}
+                cart={cart}
+                addItemInCart={addItemInCart}
             />
         </div>
     );
@@ -62,14 +65,14 @@ import productActionCreators from './actions';
     return { data : products, categories};
 } */
 
-const mapStateToProps = ({ products, categories}) => {
+const mapStateToProps = ({ products, categories ,cart}) => {
     const selectedCatgory = categories.selectedCategory;
     if (selectedCatgory !== "")
       return {
         data: products.filter(p => p.category === selectedCatgory),
         categories : categories.categoryList
       };
-    return { data: products, categories : categories.categoryList };
+    return { data: products, categories : categories.categoryList , cart};
 }
 
 /* function mapDispatchToProps(dispatch){
@@ -77,6 +80,8 @@ const mapStateToProps = ({ products, categories}) => {
     return productActionDispatchers;
 } */
 
-const mapDispatchToProps = dispatch => bindActionCreators(productActionCreators, dispatch);
+const mapDispatchToProps = dispatch => {
+    return {...bindActionCreators(productActionCreators, dispatch) , ...bindActionCreators(cartActionCreators,dispatch)}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

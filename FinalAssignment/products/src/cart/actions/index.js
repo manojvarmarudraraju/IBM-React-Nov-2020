@@ -12,6 +12,7 @@ const cartActionCreators = {
                 item.id = product.id;
                 item.quantity = product.quantity+1;
             }
+            console.log(item);
             Services.save(item).then((response) => {
                 const action = {
                     type: 'CHANGE_QUANTITY_IN_CART',

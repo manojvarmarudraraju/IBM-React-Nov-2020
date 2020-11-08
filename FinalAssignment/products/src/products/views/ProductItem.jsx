@@ -24,14 +24,20 @@ import React, { Component } from 'react';
     }
 } */
 
-const ProductItem = ({ product, toggleOutOfStock, remove }) => {
-    const { name, description, price, isOutOfStock, category } = product;
+// cart={cart}
+//                 addItemInCart={addItemInCart}
+
+const ProductItem = ({ product, toggleOutOfStock, remove ,cart , addItemInCart }) => {
+    const { name, description, price, isOutOfStock, category ,id } = product;
     return (
         <li>
             <span className={'name ' + (isOutOfStock ? 'outofstock' : '')}>
                 {name}
             </span>
             <span> {category} </span>
+            <span style={{'float':'right'}}>
+                <input disabled={isOutOfStock} type="button" value="Add to Cart" onClick={() => addItemInCart(id,cart)} />
+            </span>
             <div>{description}</div>
             <div className="price">Rs.{price}</div>
             <input type="checkbox"

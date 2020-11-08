@@ -8,7 +8,7 @@ const CartItem = (props) => {
     const product = productsList.find((item) => {
         return item.id === cartItem.productID;
     });
-    const { name, description, price, category } = product;
+    const { name, description, price, category , id:productID } = product;
     return (
         <li>
             <div className="price">Rs.{cartItem.quantity*price}</div>
@@ -21,16 +21,16 @@ const CartItem = (props) => {
             <br />
             <div>
                 <span>
-                    <input type="button" value="-" onClick={() => reduceItemInCart(productID , cartItems)} />
+                    <input type="button" value="-" onClick={() => props.reduceItemInCart(productID , cartItems)} />
                 </span>
                 <span>
                     [ {cartItem.quantity} ]
                 </span>
                 <span>
-                    <input type="button" value="+" onClick={() => addItemInCart(productID, cartItems)} />
+                    <input type="button" value="+" onClick={() => props.addItemInCart(productID, cartItems)} />
                 </span>
             </div>
-            <input type="button" value="Remove" onClick={() => removeItemFromCart(productID, cartItems)} />
+            <input type="button" value="Remove" onClick={() => props.removeItemFromCart(productID, cartItems)} />
         </li>
     );
 
