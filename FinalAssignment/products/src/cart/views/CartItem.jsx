@@ -11,13 +11,13 @@ const CartItem = (props) => {
     const { name, description, price, category , id:productID } = product;
     return (
         <li>
-            <div className="price">Rs.{cartItem.quantity*price}</div>
+            <div className="price">Cost : Rs.{cartItem.quantity*price}</div>
             <span>
                 {name}
             </span>
             <span> {category} </span>
             <div>{description}</div>
-            <div className="price">Rs.{price}</div>
+            <div className="price">Cost per Quantity: Rs.{price}</div>
             <br />
             <div>
                 <span>

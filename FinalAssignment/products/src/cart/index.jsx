@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import cartActionCreators from './actions';
 import CartList from './views/CartList';
+import CartTotal from './views/CartTotal';
 
 function Cart(props){
     return (
@@ -12,6 +13,11 @@ function Cart(props){
             <hr />
             <CartList
                 items={props.cartItems}
+                products={props.products}
+            />
+            <CartTotal
+                items={props.cartItems}
+                products={props.products}
             />
         </div>
     );
@@ -19,7 +25,8 @@ function Cart(props){
 
 const mapStateToProps = (state) => {
     return {
-        cartItems: state.cart
+        cartItems: state.cart,
+        products: state.products,
     }
 }
 
