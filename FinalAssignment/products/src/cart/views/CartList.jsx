@@ -2,11 +2,11 @@ import React from 'react';
 import CartItem from './CartItem';
 
 const CartList = (props) => {
-    const {cartItems} = props;
-    const cartList = cartItems.map((item) => (
+    const {items} = props;
+    const cartList = items.map((item) => (
         <CartItem
             key={item.id}
-            item={item}
+            cartItem={item}
         />
     ));
     return (
