@@ -17,7 +17,7 @@ const categoryActionCreators = {
         const action = { type : 'SET_SELECTED_CATEGORY', payload : category};
         return action;
     },
-    load(){
+    loadCategories(){
         return function(dispatch){
             CategoriesAPI
                 .getAll()

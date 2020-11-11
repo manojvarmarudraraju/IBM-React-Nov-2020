@@ -5,11 +5,6 @@ import categoryActionCreators from './actions';
 import './index.css';
 
 class Categories extends Component{
-
-    componentDidMount = () => {
-        const {load} = this.props;
-        load();
-    }
     state = {
         newCategorName : ''
     };

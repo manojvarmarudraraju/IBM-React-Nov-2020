@@ -1,6 +1,6 @@
 import productsApi from '../services/productsApi';
 
-function load(){
+function loadProducts(){
     return function(dispatch){
         productsApi
             .getAll()
@@ -11,4 +11,4 @@ function load(){
     }
 }
 
-export default load;
+export default loadProducts;

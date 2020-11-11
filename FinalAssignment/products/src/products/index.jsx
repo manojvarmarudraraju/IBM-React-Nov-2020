@@ -34,7 +34,6 @@ import cartActionCreators from '../cart/actions';
 } */
 
  const Products = ({ data, categories, toggleOutOfStock, remove, removeOutOfStock, addNew, load , addItemInCart , cart }) => {
-     useEffect(load, [load]);
      return (
         <div>
             <h3>Products</h3>

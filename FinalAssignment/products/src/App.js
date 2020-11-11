@@ -8,12 +8,16 @@ import Cart from './cart';
 import TimerContainer from './timer/TimerContainer';
 import Home from './Home';
 import { bindActionCreators } from 'redux';
-import cartActionCreators from './cart/actions'
+import cartActionCreators from './cart/actions';
+import productActionCreators from './products/actions';
+import categoriesActionCreators from './categories/actions'
 import { useEffect } from 'react';
 
 function App(props) {
   useEffect(() => {
     props.cartGetAll();
+    props.loadCategories();
+    props.loadProducts();
 } ,[]);
   return (
     <Router>
@@ -49,6 +53,12 @@ const mapStateToProps = (state) => {
     cart: state.cart
   }
 }
-const mapDispatchToProps = (dispatch) => bindActionCreators(cartActionCreators, dispatch);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ...bindActionCreators(cartActionCreators, dispatch) ,
+    ...bindActionCreators(productActionCreators, dispatch),
+    ...bindActionCreators(categoriesActionCreators,dispatch),
+  }
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
