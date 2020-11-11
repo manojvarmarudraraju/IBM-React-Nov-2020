@@ -39,16 +39,5 @@
       "category": "Utensil"
     }
   ],
-  "cart": [
-    {
-      "productID": 2,
-      "id": 1,
-      "quantity": 1
-    },
-    {
-      "productID": 2,
-      "id": 2,
-      "quantity": 3
-    }
-  ]
+  "cart": []
 }

@@ -18,6 +18,9 @@ function cartReducer(currentState = [] , action){
         }
         return newState;
     }
+    if(action.type === 'CART_ITEMS_GET_ALL'){
+        return action.payload;
+    }
     return currentState;
 }
 

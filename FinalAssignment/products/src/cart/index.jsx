@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useEffect} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import cartActionCreators from './actions';
@@ -30,6 +30,8 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => bindActionCreators(cartActionCreators, dispatch);
 
 
-export default connect(mapStateToProps,null)(Cart);
+
+export default connect(mapStateToProps,mapDispatchToProps)(Cart);

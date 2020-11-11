@@ -53,6 +53,17 @@ const cartActionCreators = {
                 dispatch(action);
             });
         }
+    },
+    cartGetAll(){
+        return (dispatch) => {
+            Services.getAll().then((response) => {
+                const action = {
+                    type: 'CART_ITEMS_GET_ALL',
+                    payload: response
+                };
+                dispatch(action);
+            })
+        }
     }
 }
 

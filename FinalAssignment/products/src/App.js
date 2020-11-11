@@ -7,8 +7,14 @@ import Categories from "./categories";
 import Cart from './cart';
 import TimerContainer from './timer/TimerContainer';
 import Home from './Home';
+import { bindActionCreators } from 'redux';
+import cartActionCreators from './cart/actions'
+import { useEffect } from 'react';
 
 function App(props) {
+  useEffect(() => {
+    props.cartGetAll();
+} ,[]);
   return (
     <Router>
         <h1>My App</h1>
@@ -43,4 +49,6 @@ const mapStateToProps = (state) => {
     cart: state.cart
   }
 }
-export default connect(mapStateToProps,null)(App);
+const mapDispatchToProps = (dispatch) => bindActionCreators(cartActionCreators, dispatch);
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
